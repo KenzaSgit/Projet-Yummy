@@ -1,0 +1,110 @@
+/* Image en arrière-plan */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+    background: url('../IMG/chef.png') no-repeat center center/cover;
+    margin: 0;
+}
+
+/* Image au-dessus */
+.overlay-image {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    transform: translate(-50%, -50%);
+    width: 150px;
+    height: auto;
+}
+
+/* Conteneur du formulaire avec effet flou */
+.login-container {
+    background: rgba(9, 8, 8, 0.525); /* Transparence */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.381);
+    text-align: center;
+    margin: 120px;
+    width: 400px;
+    height: 380px;
+    
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  /* Titre */
+  .login-container {
+    text-align: center;
+    margin-bottom: 29px;
+  }
+  
+  .login-container h2 {
+    font-size: 40px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 16px;
+  }
+  
+  .title-line {
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(to right, #e4b95b, #d4a356);
+    margin: 0 auto;
+  }
+
+/* Champ de saisie */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin: 40px;
+}
+
+input {
+    padding: 12px 26px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+    margin: 10px 0;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.3);
+    color: #fff;
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+input:hover {
+    background-color: #e4b95b; /* Changement de couleur au survol */
+  } 
+
+/* Bouton */
+.Connexion {
+    all: unset;
+    padding: 12px 26px;
+    font-size: 1.2em;
+    color: #ffffff;
+    background-color: transparent;
+    border: 2px solid #ffffff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    display: inline-block; /* Pour que le bouton ait bien un bloc */
+    text-align: center;
+    margin-top: 25px;
+  }
+  
+  
+
+  
+  button:hover {
+    background-color: #e4b95b; /* Changement de couleur au survol */
+  } 
+
+

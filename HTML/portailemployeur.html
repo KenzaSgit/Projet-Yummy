@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard Employeur</title>
+  <link rel="stylesheet" href="../Style/employeur.css" />
+</head>
+<body>
+  <header>
+    <div id="navbar">
+      <a href="../HTML/index.php">
+        <img id="logo1" src="../IMG/logo_yummy-removebg-preview.png" alt="Logo Yummy">
+      </a>
+    </div>
+    <h1>DASHBOARD EMPLOYEUR</h1>
+    <form action="../backend/logout.php" method="post" class="logout-form">
+      <button type="submit">🔓 Déconnexion</button>
+    </form>
+  </header>
+  
+  
+  <main>
+    <section class="dashboard-section">
+      <h2>📅 Réservations du Jour</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Num de Reservation</th>
+            <th>Nom du Client</th>
+            <th>Nunero de Telephone</th>
+            <th>Date de Reservation</th>
+            <th>Nombre de Personnes</th>
+            <th>Occasion</th>
+            <th>Details de Reservation</th>
+          </tr>
+        </thead>
+        <tbody id="reservations-body">
+          <!-- Rempli dynamiquement via JS ou PHP -->
+        </tbody>
+      </table>
+    </section>
+
+    <section class="dashboard-section">
+      <h2>🧾 Commandes du Jour</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Numero de Commande</th>
+            <th>Numero de Table</th>
+            <th>Date de Commande</th>
+            <th>État</th>
+            <th>Details de Commande</th>
+            <th>Total a Payer</th>
+          </tr>
+        </thead>
+        <tbody id="commandes-body">
+          <!-- Rempli dynamiquement via JS ou PHP -->
+        </tbody>
+      </table>
+    </section>
+  </main>
+</body>
+</html>

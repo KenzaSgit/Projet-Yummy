@@ -1,0 +1,80 @@
+header {
+  padding: 1rem 2rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 11%;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-between; /* espace entre logo et bouton */
+  align-items: center;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  gap: 0; /* supprime gap trop large */
+}
+
+#navbar {
+  display: flex;
+  align-items: center;
+}
+
+.logout-form {
+  margin-left: auto; /* pousse vers la droite */
+}
+
+.logout-form button {
+  padding: 8px 15px;
+  background-color: #c0392b;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#navbar img {
+    width: 120px;
+    height: auto;
+    margin-left: 0; /* Retire le gros décalage si pas nécessaire */
+  }
+/* Supprime text-align: center car Flexbox le gère */
+
+  main {
+    margin-top: 50px;
+    padding: 4rem;
+  }
+  
+  .dashboard-section {
+    margin-bottom: 20px;
+    background: #ffffff;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  
+  h2 {
+    margin-top: 0;
+    color: #444;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 0.8rem;
+    text-align: left;
+  }
+  
+  th {
+    background: #eee;
+  }
+  
+  tr:nth-child(even) {
+    background: #f9f9f9;
+  }
+  

@@ -1,0 +1,149 @@
+
+/* ============================ */
+/*       MODAL VALIDATION      */
+/* ============================ */
+.validation-toggle {
+    display: none;
+  }
+  
+  .validation-modal {
+    display: none; /* Cache le modal par défaut */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  .validation-toggle:checked + .validation-modal {
+    display: block; /* Affiche le modal lorsque la case est cochée */
+  }
+
+ 
+  .validation-content {
+    background: white;
+    padding: 20px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .close-button {
+    float: right;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  .close-button:hover{
+    color: red;
+  }
+  
+  /* Titre du formulaire */
+  .validation-tag {
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 15px;
+    display: block;
+    color: #e4b95b; /* Vert foncé de ton design */
+  }
+  /* ============================ */
+  /*       FORM STYLES            */
+  /* ============================ */
+  .form-group {
+    position: relative;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column; /* Alignement en colonne pour un design plus propre */
+  }
+  
+  /* Champs de saisie (input, select, textarea) */
+  input, select, textarea {
+    
+    width: 100%;
+    max-width: 450px; /* Empêche l'input d'être trop large sur grand écran */
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+  
+  /* Effet au focus */
+  input:focus, select:focus, textarea:focus {
+    border-color: rgb(36, 36, 228);
+    box-shadow: 0 0 5px rgba(36, 36, 228, 0.5);
+    outline: none;
+  }
+  
+  /* Style des labels */
+  label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 5px;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  /* Empêcher le redimensionnement des textareas */
+  textarea {
+    resize: none;
+  }
+  
+  /* ============================ */
+  /*     BUTTON GROUP STYLES      */
+  /* ============================ */
+  .button-group {
+    display: flex; /* Aligne les boutons en ligne */
+    justify-content: space-between; /* Espace entre les boutons */
+    gap: 15px; /* Ajoute un espacement entre les boutons */
+    margin-top: 15px;
+    max-width: 500px; /* S'assure que les boutons restent bien alignés */
+  }
+  .form-row{
+    display: flex;
+    justify-content:space-between ;
+    gap: 15px;
+  }
+
+  /* Style des boutons */
+  .submit-button, .reset-button {
+    flex: 1; /* Permet aux boutons d'avoir la même largeur */
+    padding: 12px 20px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center; 
+    font-weight: 300;
+    
+  }
+  
+  /* Bouton de soumission */
+  .submit-button {
+    background-color: #e4b95b;
+    color: white;
+  }
+  
+  /* Bouton de réinitialisation */
+  .reset-button {
+    color: rgb(32, 32, 32);
+    background-color: #ccc;
+  }
+  
+  /* Effet au survol */
+  .submit-button:hover {
+    background-color:#e4b95b;
+    transform: translateY(-2px);
+  }
+  
+  .reset-button:hover {
+    background-color: #b3b3b3;
+    transform: translateY(-2px);
+  }
+  

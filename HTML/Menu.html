@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+    <title>Menu</title>
+    <link rel="stylesheet" href="../Style/stylemenu.css" >
+    <link rel="stylesheet" href="../Style/validation.css">
+  </head>
+  <body>
+    <header>
+      <div id="navbar">
+      <img src="../IMG/logo.jpg" alt=" Logo" >
+    </div>
+        <nav>
+          <div class="search-container">
+            <input type="text" class="search-input" placeholder="Search...">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="gray">
+                <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16a6.471 6.471 0 004.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.02 14 5 11.98 5 9.5S7.02 5 9.5 5 14 7.02 14 9.5 11.98 14 9.5 14z"/>
+            </svg>
+            
+            <ul class="suggestions-list"></ul>
+          </div>
+        </nav>
+        <div class="cart-icon" onclick="toggleCart()">
+          🛒 <span id="cart-count">0</span>
+        </div>
+        <aside class="cart">
+          <h2>🛒 Panier</h2>
+          <ul id="cart-items"></ul>
+          <p>Total : <span id="cart-total">0</span> DA</p>
+          <button class="valide-button" onclick="setupValidationModal()">Valider la commande</button>
+        </aside>
+      </header>
+      
+<!-- Modal de Réservation -->
+<input type="checkbox" id="validation-toggle" class="validation-toggle">
+<div class="validation-modal">
+  <div class="validation-content">
+    <label for="validation-toggle" class="close-button" aria-label="Fermer la fenêtre de validation">&times;</label>
+    <span class="validation-tag">Validation de commande</span>
+    <form action="#" method="POST" class="validation-form">
+      
+      <div class="form-group">
+        <label for="validation-table">Numéro de Table*</label>
+        <select id="validation-table" name="table" required aria-required="true">
+          <option value="" disabled selected>Choisissez un numéro de table</option>
+          <option value="1">Table 1</option>
+          <option value="2">Table 2</option>
+          <option value="3">Table 3</option>
+          <option value="4">Table 4</option>
+          <option value="5">Table 5</option>
+          <option value="6">Table 6</option>
+          <option value="7">Table 7</option>
+          <option value="8">Table 8</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="validation-requests">Autres Détails</label>
+        <textarea
+          id="validation-requests"
+          name="special-requests"
+          placeholder="Précisez vos demandes particulières (Allergies, etc.)"
+          rows="3"
+          aria-label="Demandes spéciales"
+        ></textarea>
+      </div>
+      
+      <div class="button-group">
+        <button type="submit" class="submit-button">Confirmer la commande</button>
+        <button type="reset" class="reset-button">Réinitialiser</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+    <main>
+      <!-- Filtre des catégories -->
+      <div class="filter-container">
+        <label for="category-filter">Filtrer par catégorie :</label>
+        <select id="category-filter">
+          <option value="all">Toutes</option>
+          <option value="entree">Entrées</option>
+          <option value="plat">Plats principaux</option>
+          <option value="dessert">Desserts</option>
+          <option value="boisson">Boissons</option>
+        </select>
+      </div>
+    
+      <!-- Section contenant tous les articles -->
+      <section class="menu">
+    
+        <p id="no-results-message" style="display: none; text-align: center; color: rgb(0, 0, 0);">
+          "Il n'y a aucun plat avec ce nom."
+        </p>
+        
+      
+  <!-- Entrées -->
+<div class="category">
+  <h2 class="category-title">Entrées</h2>
+  <div class="title-line"></div>
+
+  <div class="card-container">
+
+    <article class="card" data-category="entree">
+      <div class="card-image">
+        <img src="../IMG/FullMenu/1.png" alt="Salade César">
+      </div>
+      <div class="card-content">
+        <h2 class="card-title">Salade César</h2>
+        <p class="card-description">Salade fraîche et des legumes avec poulet grillé.</p>
+        <div class="card-footer">
+          <span class="price">400 DA</span>
+          <button class="add-to-cart" onclick="addToCart('Salade César', 400)">Ajouter au panier</button>
+        </div>
+      </div>
+    </article>
+
+    <!-- Les autres cards ici... -->
+
+
+      <article class="card" data-category="entree">
+        <div class="card-image">
+          <img src="../IMG/FullMenu/2.png" alt="Salade composée de saison" >
+        </div>
+        <div class="card-content">
+          <h2 class="card-title">Salade composée de saison</h2>
+          <p class="card-description">Salade fraîche avec des legumes de saison.</p>
+          <div class="card-footer">
+            <span class="price">400 DA</span>
+            <button class="add-to-cart" onclick="addToCart('Salade composée de saison', 400)">Ajouter au panier</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-category="entree">
+        <div class="card-image">
+          <img src="../IMG/FullMenu/3.png" alt="Soupe chorba algérienne" >
+        </div>
+        <div class="card-content">
+          <h2 class="card-title">Soupe chorba algérienne</h2>
+          <p class="card-description">Une soupe traditionnelle parfumée aux épices.</p>
+          <div class="card-footer">
+            <span class="price">350 DA</span>
+            <button class="add-to-cart" onclick="addToCart('Soupe chorba algérienne', 350)">Ajouter au panier</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-category="entree">
+        <div class="card-image">
+          <img src="../IMG/FullMenu/4.png" alt="Soupe de poisson" >
+        </div>
+        <div class="card-content">
+          <h2 class="card-title">Soupe de poisson</h2>
+          <p class="card-description">Un délicieux bouillon de la mer.Avec meilleur poissons</p>
+          <div class="card-footer">
+            <span class="price">450 DA</span>
+            <button class="add-to-cart" onclick="addToCart('Soupe de poisson', 450)">Ajouter au panier</button>
+          </div>
+        </div>
+      </article>
+<!-- Séparateur -->
+      <hr class="separator">
+      
+    </div>
+  </div>
+
+  
+  <!-- Plats Principaux -->
+ 
+  <div class="category">
+    <h2 class="category-title">Plats Principaux</h2>
+    <div class="title-line"></div>
+
+    <div class="card-container">
+      <article class="card" data-category="plat">
+        <div class="card-image">
+          <img src="../IMG/FullMenu/tajine.png" alt="Tajine de poulet" >
+        </div>
+        <div class="card-content">
+          <h2 class="card-title">Tajine de poulet</h2>
+          <p class="card-description">Poulet mijoté avec légumes parfumee avec épices.</p>
+          <div class="card-footer">
+            <span class="price">700 DA</span>
+            <button class="add-to-cart" onclick="addToCart('Tajine de poulet', 700)">Ajouter au panier</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-category="plat">
+        <div class="card-image">
+          <img src="../IMG/FullMenu/5.png" alt="Couscous" >
+        </div>
+        <div class="card-content">
+          <h2 class="card-title">Couscous</h2>
+          <p class="card-description">Couscous viande aux légumes frais bien fait.</p>
+          <div class="card-footer">
+            <span class="price">900 DA</span>
+            <button class="add-to-cart" onclick="addToCart('Couscous', 900)">Ajouter au panier</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-category="plat">
+        <div class="card-image">
+          <img src="../IMG/FullMenu/6.png" alt="Marmite de fruits de mer" >
+        </div>
+        <div class="card-content">
+          <h2 class="card-title">Marmite de fruits de mer</h2>
+          <p class="card-description">Un assortiment raffiné de fruits de mer fraiches.</p>
+          <div class="card-footer">
+            <span class="price">1500 DA</span>
+            <button class="add-to-cart" onclick="addToCart('Marmite de fruits de mer', 1500)">Ajouter au panier</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-category="plat">
+        <div class="card-image">
+          <img src="../IMG/FullMenu/7.png" alt="Purée et steak" >
+        </div>
+        <div class="card-content">
+          <h2 class="card-title">Purée et steak</h2>
+          <p class="card-description">Purée de pommes de terre avec un streak.</p>
+          <div class="card-footer">
+            <span class="price">1000 DA</span>
+            <button class="add-to-cart" onclick="addToCart('Purée et steak', 1000)">Ajouter au panier</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-category="plat">
+        <div class="card-image">
+          <img src="../IMG/FullMenu/8.png" alt="Macaronis gratinés au fromage" >
+        </div>
+        <div class="card-content">
+          <h2 class="card-title">Macaronis gratinés </h2>
+          <p class="card-description">Des macaronis fondants enrobés d’une sauce crémeuse au fromage.</p>
+          <div class="card-footer">
+            <span class="price">500 DA</span>
+            <button class="add-to-cart" onclick="addToCart('Macaronis gratinés au fromage', 500)">Ajouter au panier</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-category="plat">
+        <div class="card-image">
+          <img src="../IMG/FullMenu/9.png" alt="Lasagnes à la bolognaise">
+        </div>
+        <div class="card-content">
+          <h2 class="card-title">Lasagnes à la bolognaise</h2>
+          <p class="card-description">Des pâtes fraîches superposées avec une sauce bolognaise mijotée.</p>
+          <div class="card-footer">
+            <span class="price">800 DA</span>
+            <button class="add-to-cart" onclick="addToCart('Lasagnes à la bolognaise', 800)">Ajouter au panier</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-category="plat">
+        <div class="card-image">
+          <img src="../IMG/FullMenu/10.png" alt="Gratin dauphinois">
+        </div>
+        <div class="card-content">
+          <h2 class="card-title">Gratin dauphinois</h2>
+          <p class="card-description">Pommes de terre cuites au four dans une crème onctueuse à l’ai.</p>
+          <div class="card-footer">
+            <span class="price">550 DA</span>
+            <button class="add-to-cart" onclick="addToCart('Gratin dauphinois', 550)">Ajouter au panier</button>
+          </div>
+        </div>
+      </article>
+<!-- Séparateur -->
+<hr class="separator">
+    </div>
+  </div>
+  
+  <!-- Desserts -->
+  
+  <div class="category">
+    <h2 class="category-title">Desserts</h2>
+    <div class="title-line"></div>
+
+    <div class="card-container">
+      <article class="card" data-category="dessert">
+        <div class="card-image">
+          <img src="../IMG/FullMenu/brownie.jpg" alt="Brownie" >
+        </div>
+        <div class="card-content">
+          <h2 class="card-title">Brownie</h2>
+          <p class="card-description">Délicieux sucree brownie au chocolat noir.</p>
+          <div class="card-footer">
+            <span class="price">250 DA</span>
+            <button class="add-to-cart" onclick="addToCart('Brownie', 250)">Ajouter au panier</button>
+          </div>
+        </div>
+      </article>
+  
+      <article class="card" data-category="dessert">
+        <div class="card-image">
+          <img src="../IMG/FullMenu/waffle.jpg" alt="Waffle" >
+        </div>
+        <div class="card-content">
+          <h2 class="card-title">Waffle</h2>
+          <p class="card-description">Délicieux waffle au fraise fraiches et sucre glace .</p>
+          <div class="card-footer">
+            <span class="price">200 DA</span>
+            <button class="add-to-cart" onclick="addToCart('Waffle', 200)">Ajouter au panier</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-category="dessert">
+        <div class="card-image">
+          <img src="../IMG/FullMenu/tiramisu.jpg" alt="Tiramisu" >
+        </div>
+        <div class="card-content">
+          <h2 class="card-title">Tiramisu</h2>
+          <p class="card-description">Un dessert italien raffiné bien parfumee au cafe.</p>
+          <div class="card-footer">
+            <span class="price">200 DA</span>
+            <button class="add-to-cart" onclick="addToCart('Tiramisu', 200)">Ajouter au panier</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-category="dessert">
+        <div class="card-image">
+          <img src="../IMG/FullMenu/18.png" alt="Fondant au chocolat" >
+        </div>
+        <div class="card-content">
+          <h2 class="card-title">Fondant au chocolat</h2>
+          <p class="card-description">Un cœur coulant de chocolat noir intense.</p>
+          <div class="card-footer">
+            <span class="price">300 DA</span>
+            <button class="add-to-cart" onclick="addToCart('Fondant au chocolat', 300)">Ajouter au panier</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-category="dessert">
+        <div class="card-image">
+          <img src="../IMG/FullMenu/17.png" alt="CheeseCake" >
+        </div>
+        <div class="card-content">
+          <h2 class="card-title">CheeseCake</h2>
+          <p class="card-description">Délicieux Cheesecake auX fruits rouges avec une crème fraiche.</p>
+          <div class="card-footer">
+            <span class="price">250 DA</span>
+            <button class="add-to-cart" onclick="addToCart('CheeseCake', 250)">Ajouter au panier</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-category="dessert">
+        <div class="card-image">
+          <img src="../IMG/FullMenu/meringue.jpg" alt="Tarte au citron">
+        </div>
+        <div class="card-content">
+          <h2 class="card-title">Tarte au citron</h2>
+          <p class="card-description">Tarte de crème au citron acidulée et fondante.</p>
+          <div class="card-footer">
+            <span class="price">200 DA</span>
+            <button class="add-to-cart" onclick="addToCart('Tarte au citron', 200)">Ajouter au panier</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-category="dessert">
+        <div class="card-image">
+          <img src="../IMG/FullMenu/19.png" alt="Creme Brulee" >
+        </div>
+        <div class="card-content">
+          <h2 class="card-title">Creme Brulee</h2>
+          <p class="card-description">Une crème onctueuse à la vanille, délicatement caramélisée</p>
+          <div class="card-footer">
+            <span class="price">250 DA</span>
+            <button class="add-to-cart" onclick="addToCart('Creme Brulee', 250)">Ajouter au panier</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-category="dessert">
+        <div class="card-image">
+          <img src="../IMG/FullMenu/baklava.jpg" alt="Baklawa" >
+        </div>
+        <div class="card-content">
+          <h2 class="card-title">Baklawa</h2>
+          <p class="card-description">Une Baklawa au miel et aux noix, délicieuse et sucrée</p>
+          <div class="card-footer">
+            <span class="price">150 DA</span>
+            <button class="add-to-cart" onclick="addToCart('Baklawa', 150)">Ajouter au panier</button>
+          </div>
+        </div>
+      </article>
+ <!-- Séparateur -->
+ <hr class="separator">
+      
+
+    </div>
+  </div>
+  
+      <!-- Boison -->
+      
+<div class="category">
+ 
+  <h2 class="category-title">Boissons</h2>
+      <div class="title-line"></div>
+
+    <div class="card-container"> <!-- Conteneur ajouté -->
+      <article class="card" data-category="boisson">
+        <div class="card-image">
+          <img src="../IMG/FullMenu/selecto.jpg" alt="Selecto" >
+        </div>
+        <div class="card-content">
+          <h2 class="card-title">Selecto</h2>
+          <p class="card-description">Selecto – Une boisson gazeuse algérienne au goût unique de caramel .</p>
+          <div class="card-footer">
+            <span class="price">100 DA</span>
+            <button class="add-to-cart" onclick="addToCart('Selecto', 100)">Ajouter au panier</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-category="boisson">
+        <div class="card-image">
+          <img src="../IMG/FullMenu/11.png" alt="Café Expresso" >
+        </div>
+        <div class="card-content">
+          <h2 class="card-title">Café Expresso</h2>
+          <p class="card-description">Un coffee noir court et intense bien dosee</p>
+          <div class="card-footer">
+            <span class="price">150 DA</span>
+            <button class="add-to-cart" onclick="addToCart('Café Expresso', 150)">Ajouter au panier</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-category="boisson">
+        <div class="card-image">
+          <img src="../IMG/FullMenu/12.png" alt="Matcha Latte" >
+        </div>
+        <div class="card-content">
+          <h2 class="card-title">Matcha Latte</h2>
+          <p class="card-description">Un mélange de thé matcha finement moulu et de lait chaud.</p>
+          <div class="card-footer">
+            <span class="price">400 DA</span>
+            <button class="add-to-cart" onclick="addToCart('Matcha Latte', 400)">Ajouter au panier</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-category="boisson">
+        <div class="card-image">
+          <img src="../IMG/FullMenu/13.png" alt="Cappuccino" >
+        </div>
+        <div class="card-content">
+          <h2 class="card-title">Cappuccino</h2>
+          <p class="card-description">Un espresso corsé surmonté d’une mousse de lait .</p>
+          <div class="card-footer">
+            <span class="price">300 DA</span>
+            <button class="add-to-cart" onclick="addToCart('Cappuccino', 300)">Ajouter au panier</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-category="boisson">
+        <div class="card-image">
+          <img src="../IMG/FullMenu/14.png" alt="Jus d’orange" >
+        </div>
+        <div class="card-content">
+          <h2 class="card-title">Jus d’orange</h2>
+          <p class="card-description">Un pur jus d’orange naturel pressé à la minute frais.</p>
+          <div class="card-footer">
+            <span class="price">200 DA</span>
+            <button class="add-to-cart" onclick="addToCart('Jus d’orange', 200)">Ajouter au panier</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-category="boisson">
+        <div class="card-image">
+          <img src="../IMG/FullMenu/15.png" alt="Iced Coffee" >
+        </div>
+        <div class="card-content">
+          <h2 class="card-title">Iced Coffee</h2>
+          <p class="card-description">Un café glacé rafraîchissant, préparé avec un espresso intense et du lait.</p>
+          <div class="card-footer">
+            <span class="price">250 DA</span>
+            <button class="add-to-cart" onclick="addToCart('Iced Coffee', 250)">Ajouter au panier</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-category="boisson">
+        <div class="card-image">
+          <img src="../IMG/FullMenu/16.png" alt="Smoothie fraise & banane" >
+        </div>
+        <div class="card-content">
+          <h2 class="card-title">Smoothie fraise & banane</h2>
+          <p class="card-description">Un mélange velouté et gourmand de fraises et de bananes fraîches.</p>
+          <div class="card-footer">
+            <span class="price">400 DA</span>
+            <button class="add-to-cart" onclick="addToCart('Smoothie fraise & banane', 400)">Ajouter au panier</button>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+      </section>
+    </main>
+    
+    <script src="../Script/scriptmenu.js"></script>
+  </body>
+</html>
